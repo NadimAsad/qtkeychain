@@ -134,25 +134,27 @@ set(qtkeychain_TR_FILES
     translations/qtkeychain_zh.ts
 )
 
-add_library(${PROJECT_NAME}
-    ${qtkeychain_MOC}
-    ${qtkeychain_SOURCES}
-    ${qtkeychain_QM_FILES}
-)
-
-target_link_libraries(${PROJECT_NAME}
-    PUBLIC
-        Qt5::Core
-)
-
 file(GLOB qtkeychain_TR_SOURCES source/*.cpp include/*.h)
 if (BUILD_TRANSLATION)
     qt_create_translation(qtkeychain_MESSAGES ${qtkeychain_TR_SOURCES} ${qtkeychain_TR_FILES})
     qt_add_translation(qtkeychain_QM_FILES ${qtkeychain_TR_FILES})
     add_custom_target(messages DEPENDS ${qtkeychain_MESSAGES})
     add_custom_target(translations DEPENDS ${qtkeychain_QM_FILES} messages)
+endif()
+
+add_library(${PROJECT_NAME}
+    ${qtkeychain_MOC}
+    ${qtkeychain_SOURCES}
+    ${qtkeychain_QM_FILES}
+)
+if(BUILD_TRANSLATION)
     add_dependencies(${PROJECT_NAME} translations)
 endif()
+
+target_link_libraries(${PROJECT_NAME}
+    PUBLIC
+        Qt5::Core
+)
 
 if(WIN32)
     target_link_libraries(${PROJECT_NAME}
