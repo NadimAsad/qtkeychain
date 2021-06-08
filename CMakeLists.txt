@@ -30,10 +30,10 @@ if (WIN32)
     endif()
 endif()
 
-find_package(Qt5 COMPONENTS Core REQUIRED)
+find_package(Qt5 5.15 COMPONENTS Core REQUIRED)
 
 if(ANDROID)
-    find_package(Qt5 COMPONENTS AndroidExtras REQUIRED)
+    find_package(Qt5 5.15 COMPONENTS AndroidExtras REQUIRED)
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
@@ -41,7 +41,7 @@ if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
 endif()
 
 if(BUILD_TRANSLATIONS)
-    find_package(Qt5 COMPONENTS LinguistTools REQUIRED)
+    find_package(Qt5 5.15 COMPONENTS LinguistTools REQUIRED)
 endif()
 
 set(qtkeychain_SOURCES
