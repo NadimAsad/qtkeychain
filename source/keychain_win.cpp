@@ -133,10 +133,10 @@ void ReadPasswordJobPrivate::scheduledStart() {
     blob_in.cbData = encrypted.size();
 
     const BOOL ret = CryptUnprotectData( &blob_in,
-                                        NULL,
-                                         NULL,
-                                         NULL,
-                                         NULL,
+                                         nullptr,
+                                         nullptr,
+                                         nullptr,
+                                         nullptr,
                                          0,
                                          &blob_out );
     if ( !ret ) {
@@ -157,9 +157,9 @@ void WritePasswordJobPrivate::scheduledStart() {
     blob_in.cbData = data.size();
     const BOOL res = CryptProtectData( &blob_in,
                                        L"QKeychain-encrypted data",
-                                       NULL,
-                                       NULL,
-                                       NULL,
+                                       nullptr,
+                                       nullptr,
+                                       nullptr,
                                        0,
                                        &blob_out );
     if ( !res ) {
