@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 
-set(QTKEYCHAIN_VERSION 0.12.90)
+set(QTKEYCHAIN_VERSION 0.13.0)
 set(QTKEYCHAIN_SOVERSION 1)
 
 project(qtkeychain
@@ -30,18 +30,18 @@ if (WIN32)
     endif()
 endif()
 
-find_package(Qt5 5.15 COMPONENTS Core REQUIRED)
+find_package(Qt6 6.2 COMPONENTS Core REQUIRED)
 
 if(ANDROID)
-    find_package(Qt5 5.15 COMPONENTS AndroidExtras REQUIRED)
+    find_package(Qt6 6.2 COMPONENTS AndroidExtras REQUIRED)
 endif()
 
 if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
-    find_package(Qt5 5.15 COMPONENTS DBus REQUIRED)
+    find_package(Qt6 6.2 COMPONENTS DBus REQUIRED)
 endif()
 
 if(BUILD_TRANSLATIONS)
-    find_package(Qt5 5.15 COMPONENTS LinguistTools REQUIRED)
+    find_package(Qt6 6.2 COMPONENTS LinguistTools REQUIRED)
 endif()
 
 set(qtkeychain_SOURCES
@@ -153,7 +153,7 @@ endif()
 
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
-        Qt5::Core
+        Qt6::Core
 )
 
 if(WIN32)
@@ -171,7 +171,7 @@ endif()
 if(ANDROID)
     target_link_libraries(${PROJECT_NAME}
         PUBLIC 
-            Qt5::AndroidExtras
+            Qt6::AndroidExtras
     )
 endif()
 
@@ -192,7 +192,7 @@ if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
 
     target_link_libraries(${PROJECT_NAME}
         PUBLIC
-            Qt5::DBus
+            Qt6::DBus
     )
 endif()
 
