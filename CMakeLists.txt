@@ -153,7 +153,7 @@ endif()
 
 target_link_libraries(${PROJECT_NAME}
     PUBLIC
-        Qt6::Core
+        Qt::Core
 )
 
 if(WIN32)
@@ -171,7 +171,7 @@ endif()
 if(ANDROID)
     target_link_libraries(${PROJECT_NAME}
         PUBLIC 
-            Qt6::AndroidExtras
+            Qt::AndroidExtras
     )
 endif()
 
@@ -192,7 +192,7 @@ if(UNIX AND NOT APPLE AND NOT ANDROID AND NOT HAIKU)
 
     target_link_libraries(${PROJECT_NAME}
         PUBLIC
-            Qt6::DBus
+            Qt::DBus
     )
 endif()
 
